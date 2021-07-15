@@ -1,0 +1,7 @@
+001|Algebra 1|[]|26
+002|Calculus 1|[]|26
+005|Logics|[002]|26
+004|Algebra 2|[001]|26
+003|Calculus 2|[002]|26
+006|Combinaturics|[005]|20
+007|Probability|[003,006]|15
