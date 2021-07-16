@@ -64,13 +64,13 @@ A LOGOUT command is used to logout the user from the system.Rturns an ERROR if t
 
 A COURSEREG command is used to register the logged in user to the <num of course> course in the system.Returns an ERROR on the following cases:
 	
-	1.The user is not registered to the prior courses needed(Kdam Courses).
+1.The user is not registered to the prior courses needed(Kdam Courses).
 	
-	2.The course is full
+2.The course is full
 	
-	3.The num of course does not exist in the system.
+3.The num of course does not exist in the system.
 	
-	4.The user is not logged in
+4.The user is not logged in
 	
 
 6- KDAMCHECK
