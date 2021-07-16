@@ -5,7 +5,8 @@ A project in system programming - Server(Java) &amp; Client(C++) communication s
 
 The system simulates a client, which is a Student or an Admin , who wants to register or access information about courses.
 Once the server is launching, given a file of courses , it loads the courses to his memory and ready to serve unlimited number of clients,
-using the Reactor Desing Pattern, with great efficiency.
+using the Reactor Desing Pattern, to optimize the efficiency.
+The networking using TCP/IP protocol.
 
 The server decodes unique commands from the client , as follows(See definitions below) : 
 
@@ -116,3 +117,33 @@ Uneregister the user from the course . Returns an ERROR if the user is already u
 11- MYCOURSES
 
 This command displays a list of the registered courses of the user.Returns an empty list if the user is not registered to none of the courses.
+
+
+# Requirements & How to Launch:
+	
+For Linux users: Server - Apache Maven 3.6.0 or higher. Client - gcc 7.5.0 or higher.
+
+If not IDE is used, open the terminal and insert :
+
+For Server:
+cd {installation home}/Server
+	
+mvn clean
+	
+mvn compile
+	
+mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.BGRSServer.ReactorMain" -Dexec.args="(port)" (where port is a 4 digit number, which represents the port on your computer that the server will run on)
+	
+For client : 
+	
+cd {installation home}/client
+
+make clean
+	
+make
+	
+bin/BGRSclient <server ip> <server port>
+	
+
+
+
