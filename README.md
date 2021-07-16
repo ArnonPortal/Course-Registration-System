@@ -45,9 +45,11 @@ For each command the server sends to the client an acknowledge(ACK) or an error(
 This command provides the list of the supported commands.
 
 1- ADMINREG
+
 An ADMINREG message is used to register an admin in the system.Returns an ERROR if the name is already registered.
 
 2- STUDENTREG
+
 A STUDENTREG message is used to register a student in the system.Returns an ERROR if the name is already registered.
 
 3- LOGIN
@@ -61,10 +63,15 @@ A LOGOUT command is used to logout the user from the system.Rturns an ERROR if t
 5- COURSEREG
 
 A COURSEREG command is used to register the logged in user to the <num of course> course in the system.Returns an ERROR on the following cases:
+	
 	1.The user is not registered to the prior courses needed(Kdam Courses).
+	
 	2.The course is full
+	
 	3.The num of course does not exist in the system.
+	
 	4.The user is not logged in
+	
 
 6- KDAMCHECK
 
@@ -74,18 +81,28 @@ KDAMCHECK command is used for checking the prior courses needed for a specific c
 7- COURSESTAT
 
 An Admin user command which displays the status of a specific course: 
+	
 1.The name of the course.
+	
 2.Number of seats available.
+	
 3.A list of registered students.
+	
+	
 Returns an ERROR if the course doesnt exist in the system , the user is not an admin or is not logged in.
 
 	
 8- STUDENTSTAT
+	
 
 An Admin user command which displays the status of a specific student:
+	
 1.Student username.
+	
 2.List of registered courses ordered as in the courses file.
+	
 Returns an ERROR if the course doesnt exist in the system , the user is not an admin or is not logged in.
+	
 	
 
 9- ISREGISTERED
