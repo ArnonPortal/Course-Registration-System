@@ -125,7 +125,8 @@ For Linux users: Server - Apache Maven 3.6.0 or higher. Client - gcc 7.5.0 or hi
 
 If not IDE is used, open the terminal and insert :
 
-For Server:
+**For Server:**
+	
 cd {installation home}/Server
 	
 mvn clean
@@ -134,7 +135,7 @@ mvn compile
 	
 mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.BGRSServer.ReactorMain" -Dexec.args="(port)" (where port is a 4 digit number, which represents the port on your computer that the server will run on)
 	
-For client : 
+**For client :** 
 	
 cd {installation home}/client
 
