@@ -152,5 +152,5 @@ make clean
 	
 make
 	
-bin/BGRSclient <server ip> <server port>
+bin/BGRSclient 'server ip' 'server port'
 	
