@@ -145,6 +145,3 @@ make
 	
 bin/BGRSclient <server ip> <server port>
 	
-
-
-
