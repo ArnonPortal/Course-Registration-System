@@ -18,6 +18,7 @@ public class BGRSEncoderDecoder implements MessageEncoderDecoder<Serializable> {
     private int zeroCount = 0; //counter for \0 char
     private Database databaseInstance = Database.getInstance();
 
+    //Decodes byte by byte the request from the client and returns the Serializable response to the protocol.
     @Override
     public Serializable decodeNextByte(byte nextByte) {
         //reset for a new message
@@ -88,8 +89,9 @@ public class BGRSEncoderDecoder implements MessageEncoderDecoder<Serializable> {
 
         bytes[len++] = nextByte;
     }
-
+    //After decoding is finished , sending to the protocol the clients request according to the opcode given.
     private Command<Database> popCommand() {
+        //Reset for next decoding
         len = 0;
         switch (opcode) {
             case 1:
@@ -283,7 +285,8 @@ public class BGRSEncoderDecoder implements MessageEncoderDecoder<Serializable> {
         inputUsername = null;
         inputPassword = null;
     }
-
+    
+    //Encoding the response given from the protocol into an array of bytes and sends it back to the client.
     @Override
     public byte[] encode(Serializable message) {
         byte[] output;
@@ -311,11 +314,13 @@ public class BGRSEncoderDecoder implements MessageEncoderDecoder<Serializable> {
 
         //encoding message opcode
         byte[] messageOpCodeBytes = shortToBytes(opcode);
-
+        
+        //Concatinating the results
         ByteBuffer buff = ByteBuffer.wrap(output);
         buff.put(opCodeBytes);
         buff.put(messageOpCodeBytes);
         buff.put(stringBytes);
+        
         return buff.array();
 
     }
