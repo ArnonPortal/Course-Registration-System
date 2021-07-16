@@ -137,7 +137,7 @@ mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.BGRSServer.ReactorMain" -Dexec.
 	
 **For client :** 
 	
-cd {installation home}/client
+cd {installation home}/Client
 
 make clean
 	
