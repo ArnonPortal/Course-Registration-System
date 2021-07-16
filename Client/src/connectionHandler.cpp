@@ -70,7 +70,7 @@ bool ConnectionHandler::numStringToBytes(short &opcode, std::string &input) {
     shortToBytes(courseNum, arr, 2);
     return sendBytes(arr, 4);
 }
-
+//This function sends and array of bytes to the server byte by byte.
 bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     int tmp = 0;
     boost::system::error_code error;
@@ -87,6 +87,7 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     return true;
 }
 
+//For each valid input the function encodes its opcode(2 bytes) and the parameters (if neccesary).
 bool ConnectionHandler::send(std::string &input){
     short opcode = 0;
     if(input.find("COMMANDS") != std::string::npos){
@@ -167,6 +168,7 @@ bool ConnectionHandler::send(std::string &input){
     return false;
 }
 
+//Decodes the message from the server byte by byte
 bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
         size_t tmp = 0;
         boost::system::error_code error;
@@ -182,7 +184,7 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
         }
         return true;
     }
-
+//Using the getBytes decoder , this function printing the response from the server to the client's screen.
 bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     char ch;
     char* opMessage=new char[4];
