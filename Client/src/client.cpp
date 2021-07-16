@@ -36,10 +36,10 @@ int main(int argc, char *argv[]) {
 
     while (!terminate) {
         const short bufsize = 1024;
-        char buf[bufsize];
+        char buf[bufsize]; //Initializing the client input buffer
         std::cin.getline(buf, bufsize);
         std::string input(buf);
-        connectionHandler.send(input);
+        connectionHandler.send(input);//This function encoding the input and sends it to the server.
         this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     return 0;
