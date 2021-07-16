@@ -1,7 +1,7 @@
 # Course-Registration-System
 A project in system programming - Server(Java) &amp; Client(C++) communication system using concurrency and networking .
 
-Description:
+# Description:
 
 The system simulates a client, which is a Student or an Admin , who wants to register or access information about courses.
 Once the server is launching, given a file of courses , it loads the courses to his memory and ready to serve unlimited number of clients,
@@ -38,7 +38,7 @@ For each command the server sends to the client an acknowledge(ACK) or an error(
 
 
 
-Commands description:
+# Commands description:
 
 0- COMMANDS
 
@@ -64,116 +64,38 @@ A COURSEREG command is used to register the logged in user to the <num of course
 	1.The user is not registered to the prior courses needed(Kdam Courses).
 	2.The course is full
 	3.The num of course does not exist in the system.
-	3.The user is not logged in
-
-Parameters:
-
-Opcode: 5
-
-Course Number: the number of the course the student wants to register to.
-
-Command initiation: This command is initiated by entering the following text in the client command line interface: COURSEREG (CourseNum)
+	4.The user is not logged in
 
 6- KDAMCHECK
 
-A student user command. this message checks what are the KDAM courses of the specified course. If student registered to a course successfully, we consider him having this course as KDAM.
+KDAMCHECK command is used for checking the prior courses needed for a specific course. Returns an ERROR if the course doesnt exist in the system.
 
-Parameters:
-
-Opcode: 6
-
-Course Number: the number of the course the user needs to know its KDAM courses. When the server gets the message it returns the list of the KDAM courses(if there are now KDAM courses it returns an empty string).
-
-Command initiation: This command is initiated by entering the following texts in the client command line interface: KDAMCHECK (CourseNumber)
 
 7- COURSESTAT
 
-An Admin user command. The admin sends this message to the server to get the state of a specific course.
+An Admin user command which displays the status of a specific course: 
+1.The name of the course.
+2.Number of seats available.
+3.A list of registered students.
+Returns an ERROR if the course doesnt exist in the system , the user is not an admin or is not logged in.
 
-The client prints the state of the course as followed:
-
-Course: (courseNum) courseName
-
-Seats Available: numOfSeatsAvailable / maxNumOfSeats
-
-Students Registered: listOfStudents //ordered alphabetically
-
-Example:
-
-Course: (42) How To Train Your Dragon
-
-Seats Available: 22/25
-
-Students Registered: [ahufferson, hhhaddock, thevast] //if there are no students registered yet, simply prints []
-
-Parameters:
-
-Opcode: 7
-
-Course Number: the number of the course we want the state of.
-
-Command initiation:
-
-This command is initiated by entering the following texts in the client command line interface: COURSESTAT (courseNum)
-
+	
 8- STUDENTSTAT
 
-An admin user command. A STUDENTSTAT message is used to receive a status about a specific student.
-
-The client prints the state of the course as followed:
-
-Student: (studentUsername)
-
-Courses: (listOfCoursesNumbersStudentRegisteredTo)
-
-Example:
-
-Student: hhhaddock
-
-Courses: [42] // if the student hasn’t registered to any course yet, simply prints []
-
-Parameters:
-
-Opcode: 8
-
-Command initiation:
-
-This command is initiated by entering the following texts in the client command line interface: STUDENTSTAT (StudentUsername)
+An Admin user command which displays the status of a specific student:
+1.Student username.
+2.List of registered courses ordered as in the courses file.
+Returns an ERROR if the course doesnt exist in the system , the user is not an admin or is not logged in.
+	
 
 9- ISREGISTERED
 
-A student user command. An ISREGISTERED message is used to know if the student is registered to the specified course. The server sends back “REGISTERED” if the student is already registered to the course, otherwise, it sends back “NOT REGISTERED”.
-
-Parameters:
-
-Opcode: 9
-
-Course Number: The number of the course the student wants to check.
-
-Command initiation:
-
-This command is initiated by entering the following texts in the client command line interface: ISREGISTERED (courseNum)
+This command returns REGISTERED/NOT REGISTERED if the use is registered/not registered to the input course. If the course doesnt exist or the user isnt logged in- returns and ERROR.
 
 10- UNREGISTER
 
-A student user command. An UNREGISTER message is used to unregister to a specific course. The server sends back an ACK message if the registration process successfully done, otherwise, it sends back an ERR message.
-
-Parameters:
-
-Opcode: 10
-
-Course Number: The number of the course the student wants to unregister to.
-
-Command initiation: This command is initiated by entering the following texts in the client command line interface: UNREGISTER (courseNum)
+Uneregister the user from the course . Returns an ERROR if the user is already unregistered from the course or the user is not logged in.
 
 11- MYCOURSES
 
-A student user command. A MYCOURSES message is used to know the courses the student has registered to. The server sends back a list of the courses number(in the format:[(coursenum1),(coursenum2)]) that the student has registered to (could be empty []).
-
-Parameters:
-
-Opcode: 11
-
-Command initiation:
-
-This command is initiated by entering the following texts in the client command line interface: MYCOURSES
+This command displays a list of the registered courses of the user.Returns an empty list if the user is not registered to none of the courses.
