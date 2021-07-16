@@ -41,11 +41,11 @@ For each command the server sends to the client an acknowledge(ACK) or an error(
 
 # Commands description:
 
-0- COMMANDS
+0- COMMANDS - ALL
 
 This command provides the list of the supported commands.
 
-1- ADMINREG
+1- ADMINREG - All
 
 An ADMINREG message is used to register an admin in the system.Returns an ERROR if the name is already registered.
 
@@ -61,7 +61,7 @@ A LOGIN message is used to login a user into the system. Returns an ERROR if the
 
 A LOGOUT command is used to logout the user from the system.Rturns an ERROR if the user is already logged out.
 
-5- COURSEREG
+5- COURSEREG - Student only
 
 A COURSEREG command is used to register the logged in user to the <num of course> course in the system.Returns an ERROR on the following cases:
 	
